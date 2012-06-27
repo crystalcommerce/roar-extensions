@@ -15,8 +15,11 @@ module RoarExtensions
   end
 end
 
+require 'active_support/core_ext/module'
+
 require "roar_extensions/json_hal_extensions"
 require 'roar_extensions/representer'
 require 'roar_extensions/presenter'
 require 'roar_extensions/destroyed_record_presenter'
 require 'roar_extensions/link_presenter'
+require 'roar_extensions/money_presenter'
