@@ -16,3 +16,6 @@ module RoarExtensions
 end
 
 require "roar_extensions/json_hal_extensions"
+require 'roar_extensions/representer'
+require 'roar_extensions/presenter'
+require 'roar_extensions/destroyed_record_presenter'
