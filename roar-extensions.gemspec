@@ -15,6 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = RoarExtensions::VERSION
 
+  gem.add_dependency("roar", "~>0.11.2")
+
   gem.add_development_dependency("rake", "~>0.9.2")
   gem.add_development_dependency("rspec", "~>2.10.0")
   gem.add_development_dependency("guard", "~>1.2.1")
