@@ -15,6 +15,7 @@ module RoarExtensions
   end
 end
 
+require 'active_support'
 require 'active_support/core_ext/module'
 
 require "roar_extensions/json_hal_extensions"
