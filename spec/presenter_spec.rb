@@ -143,6 +143,16 @@ module RoarExtensions
           ]
         end
       end
+
+      context "always renders nil attributes" do
+        before(:each) do
+          product.stub(:name).and_return(nil)
+        end
+
+        it "has a null name" do
+          subject.fetch('name').should == nil
+        end
+      end
     end
   end
 end

@@ -5,7 +5,7 @@ module RoarExtensions::Representer
 
   # In the real API, :from and name are backwards?
   def property(name, options = {})
-    options.merge!(:include_nil => true)
+    options.merge!(:render_nil => true)
 
     if create_object = options.delete(:as)
       define_method("#{name}_presented") do
