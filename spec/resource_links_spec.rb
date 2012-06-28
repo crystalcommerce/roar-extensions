@@ -33,8 +33,8 @@ module RoarExtensions
       it "turns a hash with keys as rels into proper link representations" do
         subject.test_resource_link_json('self' => '/foo', 'next' => '/bar').
           should == {
-            'self' => { 'href' => '/foo' },
-            'next' => { 'href' => '/bar' }
+            'self' => { :href => '/foo' },
+            'next' => { :href => '/bar' }
           }
       end
     end

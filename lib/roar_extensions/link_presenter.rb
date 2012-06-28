@@ -16,8 +16,8 @@ class RoarExtensions::LinkPresenter
   def to_hash(*args)
     {
       rel => {
-        'href' => href,
-        'title' => title
+        :href => href,
+        :title => title
       }.delete_if {|k,v| v.nil? || v.empty?}
     }
   end

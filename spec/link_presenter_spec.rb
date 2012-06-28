@@ -19,7 +19,7 @@ module RoarExtensions
 
     context "no title" do
       its(:as_json) do
-        should == { 'search_engine' => {'href'  => 'http://google.com'} }
+        should == { 'search_engine' => {:href => 'http://google.com'} }
       end
 
       it "aliases to_hash to as_json" do
@@ -34,8 +34,8 @@ module RoarExtensions
       its(:as_json) do
         should == {
           'search_engine' => {
-            'href'  => 'http://google.com',
-            'title' => 'Cool Search'
+            :href  => 'http://google.com',
+            :title => 'Cool Search'
           }
         }
       end
