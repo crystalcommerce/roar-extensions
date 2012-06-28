@@ -37,7 +37,7 @@ module RoarExtensions::Representer
   end
 
   def link(name, &block)
-    development = (defined?(Rails) && Rails.env.development) ||
+    development = (defined?(Rails) && Rails.env.development?) ||
                   ENV['RAILS_ENV']   == 'development' ||
                   ENV['ENVIRONMENT'] == 'development'
     if development
