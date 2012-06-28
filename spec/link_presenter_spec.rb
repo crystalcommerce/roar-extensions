@@ -21,6 +21,10 @@ module RoarExtensions
       its(:as_json) do
         should == { 'search_engine' => {'href'  => 'http://google.com'} }
       end
+
+      it "aliases to_hash to as_json" do
+        subject.to_hash.should == subject.as_json
+      end
     end
 
     context "title given" do
@@ -34,6 +38,10 @@ module RoarExtensions
             'title' => 'Cool Search'
           }
         }
+      end
+
+      it "aliases to_hash to as_json" do
+        subject.to_hash.should == subject.as_json
       end
     end
   end
