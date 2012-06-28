@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'roar_extensions/helpers/embedded_parameter_parsing'
+require 'roar_extensions'
 
 module RoarExtensions::Helpers
   describe EmbeddedParameterParsing do

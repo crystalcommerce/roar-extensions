@@ -18,7 +18,8 @@ end
 require 'active_support'
 require 'active_support/core_ext/module'
 
-require "roar_extensions/json_hal_extensions"
+require 'roar_extensions/helpers/embedded_parameter_parsing'
+require 'roar_extensions/json_hal_extensions'
 require 'roar_extensions/representer'
 require 'roar_extensions/presenter'
 require 'roar_extensions/destroyed_record_presenter'
