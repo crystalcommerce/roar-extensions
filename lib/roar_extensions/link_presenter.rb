@@ -13,7 +13,7 @@ class RoarExtensions::LinkPresenter
     title == other.title
   end
 
-  def as_json(*args)
+  def to_hash(*args)
     {
       rel => {
         'href' => href,
@@ -21,4 +21,6 @@ class RoarExtensions::LinkPresenter
       }.delete_if {|k,v| v.nil? || v.empty?}
     }
   end
+
+  alias :as_json :to_hash
 end
