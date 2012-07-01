@@ -17,7 +17,7 @@ module RoarExtensions
 
       root_element :product
 
-      delegated_property :id
+      delegated_property :id,             :always_include => true
       delegated_property :name
       delegated_property :is_buying,      :from => :buying?
       delegated_property :msrp,           :as => MoneyPresenter
@@ -67,6 +67,7 @@ module RoarExtensions
     }
 
     let(:options) { {} }
+    let(:json_options) { {} }
 
     let(:presenter) {  TestProductPresenter.new(product, options) }
 
@@ -77,7 +78,7 @@ module RoarExtensions
     end
 
     context "as_json" do
-      subject { presenter.as_json['product'] }
+      subject { presenter.as_json(json_options)['product'] }
 
       it "has a name" do
         subject['name'].should == 'Worship'
@@ -151,6 +152,14 @@ module RoarExtensions
 
         it "has a null name" do
           subject.fetch('name').should == nil
+        end
+      end
+
+      context "limiting attributes returned" do
+        let(:json_options) {{ :include => [:name] }}
+
+        it "limits to the attributes requested, plus required attributes" do
+          subject.keys.should == ['id', 'name']
         end
       end
     end

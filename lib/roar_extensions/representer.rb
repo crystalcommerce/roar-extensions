@@ -3,9 +3,16 @@ module RoarExtensions::Representer
     self.representation_wrap = element.to_s
   end
 
+  def always_include_attributes
+    @always_include_attributes ||= []
+  end
+
   # In the real API, :from and name are backwards?
   def property(name, options = {})
     options.merge!(:render_nil => true)
+    if options[:always_include]
+      always_include_attributes << name
+    end
 
     if create_object = options.delete(:as)
       define_method("#{name}_presented") do
