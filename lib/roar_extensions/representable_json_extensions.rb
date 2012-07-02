@@ -1,13 +1,13 @@
 module Representable
   module JSON
-    alias_method :original_to_hash, :to_hash
+    alias_method :to_hash_without_always_include_attributes, :to_hash
 
     def to_hash(options = {})
-      if options.has_key?(:include)
+      if options[:include]
         options[:include].map!(&:to_sym)
         options[:include] |= self.class.always_include_attributes.map(&:to_sym)
       end
-      original_to_hash(options)
+      to_hash_without_always_include_attributes(options)
     end
   end
 end

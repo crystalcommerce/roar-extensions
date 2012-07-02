@@ -10,6 +10,7 @@ module RoarExtensions::Representer
   # In the real API, :from and name are backwards?
   def property(name, options = {})
     options.merge!(:render_nil => true)
+
     if options[:always_include]
       always_include_attributes << name
     end

@@ -4,7 +4,6 @@ module RoarExtensions
 
     root_element :paginated_collection
 
-    collection :entries, :from => :record
     delegated_property :per_page
     delegated_property :total_pages
     delegated_property :total_entries
@@ -27,6 +26,19 @@ module RoarExtensions
       elsif !page_number.nil?
         "#{@base_path}?page=#{page_number}"
       end
+    end
+
+    alias_method :to_hash_without_entries, :to_hash
+
+    # Hack to push the :include and :exclude options to the collection results
+    def to_hash(options = {})
+      opt_include = options.delete(:include)
+      opt_exclude = options.delete(:exclude)
+      res = to_hash_without_entries(options)
+      res["paginated_collection"]["entries"] = record.collect.
+        map {|e| e.to_hash(options.merge(:include => opt_include,
+                                         :exclude => opt_exclude))}
+      res
     end
   end
 end
