@@ -8,17 +8,20 @@ describe Roar::Representer::JSON::HAL do
         Module.new do
           include Roar::Representer::JSON
           include Roar::Representer::Feature::Hypermedia
-        end
-      end
 
-      it "accepts strings for rel" do
-        mod.class_eval do
           link :rel => 'self', :title => "Hey, @myabc" do
             "http://self"
           end
         end
+      end
 
-        Object.new.extend(mod).to_hash['links'][0][:rel].should == 'self'
+      it "accepts strings for rel" do
+        Object.new.extend(mod).to_hash['links'][0]['rel'].should == 'self'
+      end
+
+      it "returns string keys" do
+        Object.new.extend(mod).to_hash['links'][0].keys.sort.
+          should == ['href', 'rel', 'title']
       end
     end
   end

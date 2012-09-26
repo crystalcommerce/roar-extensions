@@ -121,9 +121,9 @@ module RoarExtensions
 
       it "has api _links" do
         subject['_links'].should == {
-          'self' => { :href => "/v1/products/9001" },
-          'related_products' => { :href => "/v1/products/9001/related" },
-          'category' => { :href => '/v1/categories/800'}
+          'self' => { "href" => "/v1/products/9001" },
+          'related_products' => { "href" => "/v1/products/9001/related" },
+          'category' => { "href" => '/v1/categories/800'}
         }
       end
 

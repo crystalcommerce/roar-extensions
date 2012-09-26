@@ -17,6 +17,7 @@ end
 
 require 'active_support'
 require 'active_support/core_ext/module'
+require 'active_support/core_ext/hash/keys'
 
 require 'roar_extensions/helpers/embedded_parameter_parsing'
 require 'roar_extensions/json_hal_extensions'
@@ -28,3 +29,4 @@ require 'roar_extensions/link_presenter'
 require 'roar_extensions/money_presenter'
 require 'roar_extensions/paginated_collection_presenter'
 require 'roar_extensions/resource_links'
+require 'roar_extensions/hypermedia_extensions'
