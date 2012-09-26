@@ -156,10 +156,10 @@ module RoarExtensions
         end
 
         context "using the :from property option" do
-          let(:json_options) {{:include => [:lowercase_name]}}
+          let(:json_options) {{:include => ["lowercased_name"]}}
 
           it "the include option is passed to the entries" do
-            subject['entries'].should == [{'lowercase_name' => 'bob'}]
+            subject['entries'].should == [{'lowercased_name' => 'bob'}]
           end
         end
       end

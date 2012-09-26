@@ -34,11 +34,25 @@ module RoarExtensions
     def to_hash(options = {})
       opt_include = options.delete(:include)
       opt_exclude = options.delete(:exclude)
+
       res = to_hash_without_entries(options)
-      res["paginated_collection"]["entries"] = record.collect.
-        map {|e| e.to_hash(options.merge(:include => opt_include,
-                                         :exclude => opt_exclude))}
+      res["paginated_collection"]["entries"] = record.collect.map do |e|
+        entry_include = opt_include && opt_include.map {|name| get_actual_property_name(e, name)}
+        entry_exclude = opt_exclude && opt_exclude.map {|name| get_actual_property_name(e, name)}
+        e.to_hash(options.merge(:include => entry_include,
+                                :exclude => entry_exclude))
+      end
       res
+    end
+
+  private
+    def get_actual_property_name(entry, aliased_name)
+      if attr = entry.send(:representable_attrs).
+                      detect {|a| a.options[:from].to_s == aliased_name.to_s}
+        attr.name
+      else
+        aliased_name
+      end
     end
   end
 end
