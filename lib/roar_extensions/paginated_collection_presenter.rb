@@ -1,3 +1,4 @@
+require 'roar_extensions/kaminari_shim'
 module RoarExtensions
   class PaginatedCollectionPresenter
     include RoarExtensions::Presenter
@@ -16,6 +17,9 @@ module RoarExtensions
     link(:rel => "previous_page") { page_link(record.previous_page) }
 
     def initialize(record, base_path)
+      unless record.respond_to?(:next_page)
+        record = KaminariShim.new(record)
+      end
       super(record)
       @base_path = base_path
     end
