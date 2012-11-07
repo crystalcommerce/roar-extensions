@@ -29,7 +29,7 @@ describe Representable do
       end
 
       it "does not write them" do
-        band.send(:create_representation_with, {}, {}, Representable::JSON).
+        band.send(:create_representation_with, {}, {}, Representable::Hash::PropertyBinding).
           should == {"name" => "No One's Choice"}
       end
 
@@ -37,7 +37,7 @@ describe Representable do
         let(:band) { SkaBand.new }
 
         it "includes the attribute with value nil" do
-          band.send(:create_representation_with, {}, {}, Representable::JSON).
+          band.send(:create_representation_with, {}, {}, Representable::Hash::PropertyBinding).
             should == {"name" => "No One's Choice", "groupies" => nil}
         end
       end
@@ -49,7 +49,7 @@ describe Representable do
       end
 
       it "does writes them" do
-        band.send(:create_representation_with, {}, {}, Representable::JSON).
+        band.send(:create_representation_with, {}, {}, Representable::Hash::PropertyBinding).
           should == {"name" => "No One's Choice", "groupies" => false}
       end
     end
@@ -59,7 +59,7 @@ describe Representable do
     let(:band) { PopBand.new }
 
     it "allows false attributes" do
-      band.update_properties_from({"groupies" => false}, {}, Representable::JSON)
+      band.update_properties_from({"groupies" => false}, {}, Representable::Hash::PropertyBinding)
       band.groupies.should == false
     end
   end
