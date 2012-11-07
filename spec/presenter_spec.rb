@@ -159,7 +159,7 @@ module RoarExtensions
         let(:json_options) {{ :include => [:name] }}
 
         it "limits to the attributes requested, plus required attributes" do
-          subject.keys.should == ['id', 'name']
+          subject.keys.sort.should == ['id', 'name']
         end
       end
     end
