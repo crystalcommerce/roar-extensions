@@ -5,15 +5,15 @@ module RoarExtensions::Presenter
 
   module ConditionalEmbeds
     def skip_property?(bin, options)
-      if bin.definition.options[:embedded]
-        super || !embed_property?(bin.definition)
+      if bin.options[:embedded]
+        super || !embed_property?(bin)
       else
         super
       end
     end
 
-    def embed_property?(definition)
-      (@embedded & [definition.name.to_sym, definition.from.to_sym]).present?
+    def embed_property?(binding)
+      (@embedded & [binding.name.to_sym, binding.from.to_sym]).present?
     end
   end
 

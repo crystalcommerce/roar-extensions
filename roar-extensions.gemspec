@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = RoarExtensions::VERSION
 
   gem.add_dependency("roar", "0.11.3")
+  gem.add_dependency("representable", "~>1.2.8")
   gem.add_dependency("activesupport", ">= 2.3.14")
 
   gem.add_development_dependency "pry"
