@@ -1,6 +1,8 @@
 # Roar::Extensions
+[![Build Status](https://secure.travis-ci.org/crystalcommerce/roar-extensions.png)](http://travis-ci.org/crystalcommerce/roar-extensions)
 
-TODO: Write a gem description
+Extensions to [Roar](https://github.com/apotonick/roar). These make somewhat
+breaking changes to the API to make it easier for us to work with.
 
 ## Installation
 
